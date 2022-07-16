@@ -1,20 +1,20 @@
 <div class="login">
-  <img class="background" src="assets/imgs/img-login.png">
+  <img class="background" src="assets/imgs/img-login.png" alt="postits coloridos">
 
-  <img class="detail" src="assets/imgs/background.svg">
+  <img class="detail" src="assets/imgs/background.svg" alt="detalhe de quadrados">
 
   <div class="container">
-    <img src="assets/imgs/LOGO.svg">
+    <img src="assets/imgs/LOGO.svg" alt="logo escrito note it">
 
     <div class="container--inputs">
       <label for="email">Email</label>
-      <input type="email" name="email" id="email">
+      <input type="email" name="email" id="email" [(ngModel)]="loginPayload.email">
   
       <label for="password">Senha</label>
-      <input type="password" name="password" id="password">
+      <input type="password" name="password" id="password" [(ngModel)]="loginPayload.password">
     </div>
     
-    <ion-button>confirmar</ion-button>
+    <ion-button (click)="login()">confirmar</ion-button>
 
     <p>Não possui conta? <a href="#">Cadastre-se</a></p>
   </div>
