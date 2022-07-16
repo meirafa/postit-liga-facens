@@ -21,13 +21,14 @@
     background-color: #fff;
     border-top-left-radius: 28px;
     border-top-right-radius: 28px;
-    height: 60vh;
+    height: 65vh;
     transform: translateY(-50px);
 
     img{
         width: 22%;
         height: 30%;
         //object-fit: contain;
+        padding-top: 5%;
     }
 
     &--inputs{
