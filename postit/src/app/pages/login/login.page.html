@@ -8,13 +8,13 @@
 
     <div class="container--inputs">
       <label for="email">Email</label>
-      <input type="email" name="email" id="email" [(ngModel)]="loginPayload.email">
+      <input class="input" type="email" name="email" id="email" [(ngModel)]="loginPayload.email">
 
       <label for="password">Senha</label>
-      <input type="password" name="password" id="password" [(ngModel)]="loginPayload.password">
+      <input class="input" type="password" name="password" id="password" [(ngModel)]="loginPayload.password">
     </div>
 
-    <ion-button [class.disabled]="!canLogin()" (click)="login()">
+    <ion-button class="buttons" [class.disabled]="!canLogin()" (click)="login()">
       {{ isLoading ? 'carregando...' : 'confirmar' }}
       <app-half-circle-spinner *ngIf="isLoading" [animationDuration]="1000" [size]="25" [color]="'white'">
       </app-half-circle-spinner>

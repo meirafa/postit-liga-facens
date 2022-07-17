@@ -51,28 +51,6 @@
             font-size: 0.95rem;
             padding-left: 1rem;
         }
-    
-        input{
-            border: 1px solid #DBDBDB;
-            background-color: transparent;
-            outline: 0;
-            margin-bottom: 1rem;
-            border-radius: 20px;
-            padding: 0.95rem;
-            color: black;
-        }
-    }
-
-    ion-button{
-        --border-radius: 20px;
-        --background: #2d9fdb;
-        --box-shadow: none;
-        font-style: italic;
-        font-size: 0.8rem;
-        width: 80%;
-        height: 3rem;
-        margin-top: 2rem;
-        text-transform: capitalize; //primeira letra maiuscula
     }
 
     p{
@@ -93,5 +71,5 @@ pointer-events: none;
 }
 
 app-half-circle-spinner {
-    
+    margin-left: 1rem;
 }
