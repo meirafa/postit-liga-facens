@@ -33,6 +33,9 @@
         height: 30%;
         //object-fit: contain;
         padding-top: 5%;
+        @media screen and (max-width: 1000px){
+            width: 10%;
+        }
     }
 
     &--inputs{
@@ -82,4 +85,13 @@
             text-decoration: none;
         }
     }
+}
+
+.disabled {
+opacity: 0.5;
+pointer-events: none;
+}
+
+app-half-circle-spinner {
+    
 }
