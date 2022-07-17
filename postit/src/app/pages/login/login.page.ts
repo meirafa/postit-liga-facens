@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertController, ToastController } from '@ionic/angular';
 import { LoginPayload } from 'src/app/models/payload/login.payload'
-import { AlertService } from 'src/app/services/alert.service';
 import { HelperService } from 'src/app/services/helper.service';
 
 @Component({
@@ -12,8 +10,7 @@ import { HelperService } from 'src/app/services/helper.service';
 export class LoginPage {
 
   constructor(
-    private readonly helper: HelperService,
-    private readonly alert: AlertService,) { }
+    private readonly helper: HelperService) { }
 
   public loginPayload: LoginPayload = {
     email: '',
@@ -23,11 +20,19 @@ export class LoginPage {
   public isLoading: boolean = false;
 
   public async login(): Promise<void> {
+    if (!this.canLogin()) return;
     this.isLoading = true;
     //toast
     await this.helper.showToast('Carregando...');
     //alert
-    await this.alert.showAlert('Hello World', 'OK');
+    await this.helper.showAlert('Hello World', [{
+      text: 'Ok',
+      handler: () => console.log('Ok!'),
+    }, {
+      text: 'Ok',
+      handler: () => console.log('Outro!')
+    }]);
+    
     console.log(this.loginPayload);
   }
 
@@ -42,7 +47,7 @@ export class LoginPage {
     return false;
   }
 
-  public logoClick($event: boolean): void{
+  public logoClick($event: boolean): void {
     console.log($event);
     //console.log('Voce clicou no logo');
   }

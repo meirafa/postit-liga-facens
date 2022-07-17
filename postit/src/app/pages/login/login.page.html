@@ -8,10 +8,10 @@
 
     <div class="container--inputs">
       <label for="email">Email</label>
-      <input class="input" type="email" name="email" id="email" [(ngModel)]="loginPayload.email">
+      <input (keydown.enter)="password.focus()" class="input" type="email" name="email" id="email" [(ngModel)]="loginPayload.email">
 
       <label for="password">Senha</label>
-      <input class="input" type="password" name="password" id="password" [(ngModel)]="loginPayload.password">
+      <input #password (keydown.enter)="login()" class="input" type="password" name="password" id="password" [(ngModel)]="loginPayload.password">
     </div>
 
     <ion-button class="buttons" [class.disabled]="!canLogin()" (click)="login()">
