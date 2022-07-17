@@ -4,7 +4,7 @@
   <img class="detail" src="assets/imgs/background.svg" alt="detalhe de quadrados">
 
   <div class="container">
-    <img src="assets/imgs/LOGO.svg" alt="logo escrito note it">
+    <app-logo src="assets/imgs/LOGO.svg" alt="logo escrito note it" [full]="false" (onClick)="logoClick($event)"></app-logo>
 
     <div class="container--inputs">
       <label for="email">Email</label>

@@ -51,4 +51,9 @@ export class LoginPage {
     return false;
   }
 
+  public logoClick($event: boolean): void{
+    console.log($event);
+    //console.log('Voce clicou no logo');
+  }
+
 }
