@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { NavbarEnum } from 'src/app/models/enums/navbar.enum';
+import { NavbarItemInterface } from 'src/app/models/interfaces/navbar-intem.interface';
 
 @Component({
   selector: 'app-navbar',
@@ -27,4 +28,28 @@ export class NavbarComponent {
 
   public navbarEnum: typeof NavbarEnum = NavbarEnum;
   public currentNavbar: NavbarEnum = NavbarEnum.HOME;
+
+  public navbarList: NavbarItemInterface[] = [
+    {
+      type: NavbarEnum.FEED,
+      link: '/feed',
+      icon: 'assets/imgs/navbar_feed_disabled.svg',
+      iconActivated: 'assets/imgs/navbar_feed_enabled.svg',
+      alt: 'icon feed'
+  },
+    {
+      type: NavbarEnum.HOME,
+      link: '/home',
+      icon: 'assets/imgs/navbar_home_disabled.svg',
+      iconActivated: 'assets/imgs/navbar_home_enabled.svg',
+      alt: 'icon home'
+  },
+    {
+      type: NavbarEnum.PROFILE,
+      link: '/profile',
+      icon: 'assets/imgs/navbar_profile_disabled.svg',
+      iconActivated: 'assets/imgs/navbar_profile_enabled.svg',
+      alt: 'icon profile'
+  },
+  ]
 }
