@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { NavbarEnum } from 'src/app/models/enums/navbar.enum';
@@ -36,20 +36,20 @@ export class NavbarComponent {
       icon: 'assets/imgs/navbar_feed_disabled.svg',
       iconActivated: 'assets/imgs/navbar_feed_enabled.svg',
       alt: 'icon feed'
-  },
+    },
     {
       type: NavbarEnum.HOME,
       link: '/home',
       icon: 'assets/imgs/navbar_home_disabled.svg',
       iconActivated: 'assets/imgs/navbar_home_enabled.svg',
       alt: 'icon home'
-  },
+    },
     {
       type: NavbarEnum.PROFILE,
       link: '/profile',
       icon: 'assets/imgs/navbar_profile_disabled.svg',
       iconActivated: 'assets/imgs/navbar_profile_enabled.svg',
       alt: 'icon profile'
-  },
+    },
   ]
 }

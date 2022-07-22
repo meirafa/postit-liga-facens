@@ -1,9 +1,9 @@
-.login {
+.signup {
   background: white;
 }
 
 .background {
-  height: 30vh;
+  height: 10vh;
   object-fit: cover;
   width: 100%;
 }
@@ -25,16 +25,24 @@
   background-color: #fff;
   border-top-left-radius: 28px;
   border-top-right-radius: 28px;
-  height: 70vh;
+  height: 90vh;
   transform: translateY(-50px);
 
   .logo {
-    padding-top: 5%;
+    display: flex;
+    justify-items: end;
+    padding: 1rem;
+    width: 90%;
+
+    app-back-arrow {
+      margin: 7px 10px 0 0;
+      cursor: pointer;
+    }
+
     app-logo {
-      width: 22%;
-      height: 30%;
-      @media screen and (max-width: 900px) {
-        width: 10%;
+      width: 15%;
+      @media screen and (min-width: 760px) {
+        width: 5%;
       }
     }
   }
@@ -43,7 +51,6 @@
     display: flex;
     flex-direction: column;
     width: 80%;
-
     label {
       color: #707070;
       font-weight: bold;
@@ -53,15 +60,10 @@
       font-size: 0.8rem;
       padding-left: 1rem;
     }
-
-    ion-button {
-      margin-top: 2rem;
-    }
   }
 
   p {
     color: #707070;
-    margin-top: 1.5rem;
     font-size: 0.7rem;
 
     a {
@@ -74,8 +76,4 @@
 .disabled {
   opacity: 0.5;
   pointer-events: none;
-}
-
-app-half-circle-spinner {
-  margin-left: 1rem;
 }

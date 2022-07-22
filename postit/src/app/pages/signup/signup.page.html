@@ -1,0 +1,95 @@
+<div class="signup">
+  <img
+    class="background"
+    src="assets/imgs/img-login.png"
+    alt="postits coloridos"
+  />
+
+  <img
+    class="detail"
+    src="assets/imgs/background.svg"
+    alt="detalhe de quadrados"
+  />
+
+  <div class="container">
+    <div class="logo">
+      <app-back-arrow
+        src="assets/imgs/seta.svg"
+        (click)="toRedirect()"
+      ></app-back-arrow>
+      <app-logo
+        src="assets/imgs/LOGO.svg"
+        alt="logo escrito note it"
+      ></app-logo>
+    </div>
+
+    <div class="container--inputs">
+      <label for="email">Nome completo*</label>
+      <input
+        class="input"
+        type="text"
+        name="name"
+        id="name"
+        [(ngModel)]="signupPayload.name"
+        required
+      />
+
+      <label for="email">Email*</label>
+      <input
+        class="input"
+        type="email"
+        name="email"
+        id="email"
+        [(ngModel)]="signupPayload.email"
+        required
+      />
+
+      <label for="repeatEmail">Confirme o E-mail*</label>
+      <input
+        class="input"
+        type="email"
+        name="email"
+        id="repeatEmail"
+        [(ngModel)]="signupPayload.repeatEmail"
+        required
+      />
+
+      <label for="password">Senha*</label>
+      <input
+        #password
+        class="input"
+        type="password"
+        name="password"
+        id="password"
+        [(ngModel)]="signupPayload.password"
+        (keydown.enter)="repeatPassword.focus()"
+        required
+      />
+
+      <label for="repeatPassword">Confirme a senha*</label>
+      <input
+        #repeatPassword
+        class="input"
+        type="password"
+        name="password"
+        id="repeatPassword"
+        [(ngModel)]="signupPayload.repeatPassword"
+        required
+      />
+
+      <p>*Campos obrigatórios</p>
+
+      <p>
+        Ao registrar-me, concordo com os termos de uso a
+        <a href="#">Política de Privacidade</a> do aplicativo
+      </p>
+      <ion-button
+        class="buttons"
+        [class.disabled]="!canLogin()"
+        (click)="login()"
+      >
+        Criar conta
+      </ion-button>
+    </div>
+  </div>
+</div>

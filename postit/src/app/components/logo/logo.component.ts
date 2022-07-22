@@ -6,23 +6,21 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./logo.component.scss'],
 })
 export class LogoComponent {
-
-  constructor() { }
+  @Input()
+  public src: string;
 
   @Input()
-  public src: string = '';
+  public alt: string;
 
   @Input()
-  public alt: string = '';
-
-  @Input()
-  public full: boolean = false;
+  public full: boolean;
 
   @Output()
   public onClick: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  public sendEvent(): void{
+  constructor() {}
+
+  public sendEvent(): void {
     this.onClick.emit(true);
   }
-
 }
