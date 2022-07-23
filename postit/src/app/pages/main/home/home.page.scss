@@ -28,10 +28,9 @@
   &--new-postit {
     position: fixed;
     left: 16rem;
-    bottom: 15rem;
+    bottom: 10rem;
     display: flex;
     justify-content: center;
-    transform: rotate(8deg);
 
     &--item {
       width: 12rem;
@@ -41,38 +40,33 @@
     }
 
     div:nth-child(1) {
-      background-color: #f77d60;
-      transform: rotate(-45deg) translateX(-6rem);
+      transform: rotate(-45deg);
+      transform-origin: bottom left;
     }
 
     div:nth-child(2) {
-      background-color: #feb196;
-      transform: rotate(-30deg) translateX(-4rem);
-      top: 2rem;
+      transform: rotate(-35deg);
+      transform-origin: bottom left;
     }
 
     div:nth-child(3) {
-      background-color: #d7df6b;
-      transform: rotate(-20deg) translateX(-2rem);
-      top: 2rem;
+      transform: rotate(-23deg);
+      transform-origin: bottom left;
     }
 
     div:nth-child(4) {
-      background-color: #fef496;
-      transform: rotate(-10deg) translateX(0rem);
-      top: 2rem;
+      transform: rotate(-11deg);
+      transform-origin: bottom left;
     }
 
     div:nth-child(5) {
-      background-color: #a2c8e8;
-      transform: rotate(0deg) translateX(2rem);
-      top: 2rem;
+      transform: rotate(0deg);
+      transform-origin: bottom left;
     }
 
     div:nth-child(6) {
-      background-color: #c390bc;
-      transform: rotate(10deg) translateX(4rem);
-      top: 2rem;
+      transform: rotate(10deg);
+      transform-origin: bottom left;
     }
   }
 }

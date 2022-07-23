@@ -1,3 +1,4 @@
+import { PostitColorEnum } from './../../../models/enums/postit-color.enum';
 import { PostitProxy } from './../../../models/proxies/postit.proxy';
 import { Component, OnInit } from '@angular/core';
 
@@ -13,46 +14,57 @@ export class HomePage implements OnInit {
       title: 'Título da Nota',
       annotation:
         'Repudiandae, repellendus porro reprehenderit dolores voluptate numquam libero fuga.',
-      color: '#D7DF6B',
+      color: PostitColorEnum.GREEN,
     },
     {
       id: 1,
       title: 'Título da Nota',
       annotation:
         'Repudiandae, repellendus porro reprehenderit dolores voluptate numquam libero fuga.',
-      color: '#FEF496',
+      color: PostitColorEnum.YELLOW,
     },
     {
       id: 2,
       title: 'Título da Nota',
       annotation:
         'Repudiandae, repellendus porro reprehenderit dolores voluptate numquam libero fuga.',
-      color: '#A2C8E8',
+      color: PostitColorEnum.BLUE,
     },
     {
       id: 3,
       title: 'Título da Nota',
       annotation:
         'Repudiandae, repellendus porro reprehenderit dolores voluptate numquam libero fuga.',
-      color: '#C390BC',
+      color: PostitColorEnum.PURPLE,
     },
     {
       id: 4,
       title: 'Título da Nota',
       annotation:
         'Repudiandae, repellendus porro reprehenderit dolores voluptate numquam libero fuga.',
-      color: '#FEB196',
+      color: PostitColorEnum.ORANGE,
     },
     {
       id: 5,
       title: 'Título da Nota',
       annotation:
         'Repudiandae, repellendus porro reprehenderit dolores voluptate numquam libero fuga.',
-      color: '#F77D60',
+      color: PostitColorEnum.ROSE,
     },
   ];
 
+  public postitColorEnum: typeof PostitColorEnum = PostitColorEnum;
+
   constructor() {}
 
-  ngOnInit() {}
+  public consoleColor(color: string): void {
+    console.log('color', color);
+  }
+  public printPostit(event: PostitProxy): void {
+    console.log('postit', event);
+  }
+
+  ngOnInit() {
+    console.log('postitiColorEnum', this.postitColorEnum);
+  }
 }

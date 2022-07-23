@@ -1,4 +1,4 @@
-<div class="postit" [style.background-color]="postit.color">
+<div class="postit" [style.background-color]="postit.color" (click)="emitPost()">
   <header>
     <h6>{{ postit.title }}</h6>
   </header>

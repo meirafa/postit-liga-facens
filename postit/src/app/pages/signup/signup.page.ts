@@ -20,7 +20,7 @@ export class SignupPage implements AfterViewInit {
     repeatPassword: '',
   };
 
-  public isLoading: boolean;
+  public isSigning: boolean;
 
   constructor(
     private router: Router,
@@ -48,11 +48,11 @@ export class SignupPage implements AfterViewInit {
     this.router.navigate(['/login']);
   }
 
-  public async login(): Promise<void> {
-    if (!this.canLogin()) {
+  public async signup(): Promise<void> {
+    if (!this.canRegister()) {
       return;
     }
-    this.isLoading = true;
+    this.isSigning = true;
 
     //alert
     await this.helper.showAlert(
@@ -66,17 +66,25 @@ export class SignupPage implements AfterViewInit {
     );
   }
 
-  public canLogin(): boolean {
-    const regexEmail = new RegExp('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$');
-    const emailIsValid = regexEmail.test(this.signupPayload.email);
-
-    if (
-      emailIsValid &&
-      this.signupPayload.password.valueOf ===
-        this.signupPayload.repeatPassword.valueOf
-    ) {
-      return true;
+  public canRegister(): boolean {
+    const regex = new RegExp('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$');
+    if (this.signupPayload.name.trim().length <= 0) {
+      return false;
     }
-    return false;
+    if (!regex.test(this.signupPayload.email)) {
+      return false;
+    }
+    if (this.signupPayload.email !== this.signupPayload.repeatEmail) {
+      return false;
+    }
+
+    if (this.signupPayload.password.length < 6) {
+      return false;
+    }
+    if (this.signupPayload.password !== this.signupPayload.repeatPassword) {
+      return false;
+    }
+
+    return true;
   }
 }

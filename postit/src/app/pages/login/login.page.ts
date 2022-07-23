@@ -2,6 +2,7 @@ import { LoginPayload } from 'src/app/models/payload/login.payload';
 import { Component } from '@angular/core';
 
 import { HelperService } from 'src/app/services/helper.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginPage {
 
   public isLoading: boolean;
 
-  constructor(private readonly helper: HelperService) {}
+  constructor(private readonly helper: HelperService, private readonly router: Router) {}
 
   public async login(): Promise<void> {
     if (!this.canLogin()) {
@@ -26,15 +27,11 @@ export class LoginPage {
     //toast
     await this.helper.showToast('Carregando...');
     //alert
-    await this.helper.showAlert('Hello World', [
+    await this.helper.showAlert('Bem vindo!', [
       {
-        text: 'Ok',
-        handler: () => console.log('Ok!'),
-      },
-      {
-        text: 'Ok',
-        handler: () => console.log('Outro!'),
-      },
+        text: 'confirmar',
+        handler: () => this.router.navigate(['/home']),
+      }
     ]);
 
     console.log(this.loginPayload);

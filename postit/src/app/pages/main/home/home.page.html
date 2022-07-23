@@ -5,16 +5,40 @@
 
   <main>
     <ng-container *ngFor="let post of postitArray">
-      <app-postit [postit]="post"></app-postit>
+      <app-postit (postitSelected)="printPostit($event)" [postit]="post"></app-postit>
     </ng-container>
   </main>
 
   <div class="home--new-postit">
-    <div class="home--new-postit--item"></div>
-    <div class="home--new-postit--item"></div>
-    <div class="home--new-postit--item"></div>
-    <div class="home--new-postit--item"></div>
-    <div class="home--new-postit--item"></div>
-    <div class="home--new-postit--item"></div>
+    <div
+      class="home--new-postit--item"
+      [style.background-color]="postitColorEnum.ORANGE"
+      (click)="consoleColor(postitColorEnum.ORANGE)"
+    ></div>
+    <div
+      class="home--new-postit--item"
+      [style.background-color]="postitColorEnum.ROSE"
+      (click)="consoleColor(postitColorEnum.ROSE)"
+    ></div>
+    <div
+      class="home--new-postit--item"
+      [style.background.color]="postitColorEnum.GREEN"
+      (click)="consoleColor(postitColorEnum.GREEN)"
+    ></div>
+    <div
+      class="home--new-postit--item"
+      [style.background-color]="postitColorEnum.YELLOW"
+      (click)="consoleColor(postitColorEnum.YELLOW)"
+    ></div>
+    <div
+      class="home--new-postit--item"
+      [style.background-color]="postitColorEnum.BLUE"
+      (click)="consoleColor(postitColorEnum.BLUE)"
+    ></div>
+    <div
+      class="home--new-postit--item"
+      [style.background-color]="postitColorEnum.PURPLE"
+      (click)="consoleColor(postitColorEnum.PURPLE)"
+    ></div>
   </div>
 </div>

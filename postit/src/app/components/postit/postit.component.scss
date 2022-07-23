@@ -2,7 +2,7 @@
   width: 43vw;
   height: 35vh;
   color: #343434;
-  padding: 1rem;
+  padding: 0.2rem 1rem;
 
   h6 {
     font-size: 0.9rem;
@@ -12,7 +12,12 @@
   p {
     font-size: 0.8rem;
     margin-bottom: 1rem;
-    max-height: 25vh;
+    //max-height: 25vh;
     overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 10;
+    line-clamp: 10;
   }
 }
