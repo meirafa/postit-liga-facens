@@ -15,7 +15,7 @@ export class AppComponent {
     router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((route: NavigationEnd) => {
-        if (!this.routesWithoutNavbar.includes(route.url)) {
+        if (!this.routesWithoutNavbar.includes(route.urlAfterRedirects)) {
           this.canShowNavbar = true;
         } else {
           this.canShowNavbar = false;
