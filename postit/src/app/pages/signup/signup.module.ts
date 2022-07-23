@@ -7,16 +7,18 @@ import { IonicModule } from '@ionic/angular';
 import { SignupPageRoutingModule } from './signup-routing.module';
 
 import { SignupPage } from './signup.page';
-import { BackArrowComponent } from 'src/app/components/back-arrow/back-arrow.component';
-import { LogoComponent } from 'src/app/components/logo/logo.component';
+import { BackArrowModule } from 'src/app/components/back-arrow/back-arrow.module';
+import { LogoModule } from 'src/app/components/logo/logo.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SignupPageRoutingModule
+    SignupPageRoutingModule,
+    LogoModule,
+    BackArrowModule
   ],
-  declarations: [SignupPage, BackArrowComponent, LogoComponent]
+  declarations: [SignupPage],
 })
 export class SignupPageModule {}

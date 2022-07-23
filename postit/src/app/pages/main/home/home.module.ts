@@ -1,3 +1,5 @@
+import { LogoModule } from './../../../components/logo/logo.module';
+import { PostitModule } from './../../../components/postit/postit.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +15,9 @@ import { HomePage } from './home.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    LogoModule,
+    PostitModule
   ],
   declarations: [HomePage]
 })
