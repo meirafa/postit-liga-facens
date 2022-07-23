@@ -9,6 +9,7 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
+import { PostItModalModule } from 'src/app/modals/postit-modal/postit-modal.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { HomePage } from './home.page';
     IonicModule,
     HomePageRoutingModule,
     LogoModule,
-    PostitModule
+    PostitModule,
+    PostItModalModule
   ],
   declarations: [HomePage]
 })

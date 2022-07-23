@@ -1,6 +1,8 @@
 import { PostitColorEnum } from './../../../models/enums/postit-color.enum';
 import { PostitProxy } from './../../../models/proxies/postit.proxy';
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { PostitModalComponent } from 'src/app/modals/postit-modal/postit-modal.component';
 
 @Component({
   selector: 'app-home',
@@ -55,16 +57,51 @@ export class HomePage implements OnInit {
 
   public postitColorEnum: typeof PostitColorEnum = PostitColorEnum;
 
-  constructor() {}
+  constructor(public modalController: ModalController) {}
 
-  public consoleColor(color: string): void {
-    console.log('color', color);
+  public async openPostModal(postit: PostitProxy): Promise<void> {
+    const modal = await this.modalController.create({
+      component: PostitModalComponent,
+      cssClass: 'background-modal',
+      componentProps: {
+        postit,
+      },
+    });
+
+    await modal.present();
+
+    // modal.onDidDismiss().then(async ({ data: postit }) => {
+    //   // let index = this.postItArray.findIndex(post => post.id == postIt.id);
+    //   // this.postItArray[index] = postIt;
+    //   console.log('postit', postit);
+    //   console.log('postitArray', this.postitArray);
+    // });
   }
+
+  public async openNewPostModal(color: PostitColorEnum): Promise<void> {
+    const modal = await this.modalController.create({
+      component: PostitModalComponent,
+      cssClass: 'background-modal',
+      componentProps: {
+        color,
+        create: true,
+      },
+    });
+
+    await modal.present();
+
+    modal.onDidDismiss().then(async ({ data: postit }) => {
+      if (postit) {
+        this.postitArray.push(postit);
+      }
+    });
+  }
+
   public printPostit(event: PostitProxy): void {
     console.log('postit', event);
   }
 
   ngOnInit() {
-    console.log('postitiColorEnum', this.postitColorEnum);
+    //console.log('postitiColorEnum', this.postitColorEnum);
   }
 }

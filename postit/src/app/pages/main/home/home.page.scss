@@ -11,62 +11,70 @@
   }
 
   main {
-    margin-top: 2rem;
-    padding: 0 2rem;
-
+    margin-top: 1rem;
+    padding: 0 1rem;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 2fr;
     gap: 0 0.5rem;
 
     app-postit {
       &:nth-child(n + 3) {
-        margin-top: -16rem;
+        margin-top: -9rem;
       }
     }
   }
 
   &--new-postit {
+    width: 100%;
     position: fixed;
-    left: 16rem;
-    bottom: 10rem;
     display: flex;
     justify-content: center;
+    left: 3.5rem;
+    bottom: 8.5rem;
 
     &--item {
-      width: 12rem;
-      height: 15rem;
-      box-shadow: 0 2px 5px 2px solid #0000003d;
+      width: 10rem;
+      height: 10rem;
+      box-shadow: 0 2px 5px 2px #0000003d;
       position: absolute;
     }
 
     div:nth-child(1) {
-      transform: rotate(-45deg);
+      transform: rotate(-48deg);
       transform-origin: bottom left;
+      margin-right: 2rem;
     }
 
     div:nth-child(2) {
-      transform: rotate(-35deg);
+      transform: rotate(-37deg);
       transform-origin: bottom left;
+      margin-right: 2rem;
     }
 
     div:nth-child(3) {
-      transform: rotate(-23deg);
+      transform: rotate(-24deg);
       transform-origin: bottom left;
+      margin-right: 2rem;
     }
 
     div:nth-child(4) {
       transform: rotate(-11deg);
       transform-origin: bottom left;
+      margin-right: 1.5rem;
+      margin-top: -7px;
     }
 
     div:nth-child(5) {
       transform: rotate(0deg);
       transform-origin: bottom left;
+      margin-top: -11px;
     }
 
     div:nth-child(6) {
       transform: rotate(10deg);
       transform-origin: bottom left;
+      margin-left: 2rem;
+      margin-top: -0.8rem;
     }
   }
 }

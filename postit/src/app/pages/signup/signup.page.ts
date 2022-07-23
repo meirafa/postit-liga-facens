@@ -37,9 +37,9 @@ export class SignupPage implements AfterViewInit {
     this.animationCtrl
       .create()
       .addElement(this.mainAnimation.nativeElement)
-      .duration(1000)
+      .duration(500)
       .easing('ease-in-out')
-      .fromTo('transform', 'translateY(70px)', 'translateY(-50px)')
+      .fromTo('transform', 'scale(1)', 'translateY(-50px)')
       .fromTo('opacity', '0', '1') //animacao usada, inicio, posicao original
       .play();
   }
