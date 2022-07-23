@@ -1,15 +1,17 @@
 import { HelperService } from 'src/app/services/helper.service';
 import { SignupPayload } from './../../models/payload/signup.payload';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
-//import { Animation, AnimationController } from '@ionic/angular';
+import { AnimationController } from '@ionic/angular';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.page.html',
   styleUrls: ['./signup.page.scss'],
 })
-export class SignupPage {
+export class SignupPage implements AfterViewInit {
+  @ViewChild('mainAnimation') mainAnimation: ElementRef;
+
   public signupPayload: SignupPayload = {
     name: '',
     email: '',
@@ -23,28 +25,23 @@ export class SignupPage {
   constructor(
     private router: Router,
     private readonly helper: HelperService,
-    //private animationCtrl: AnimationController
-  ) {
-    // const animation: Animation = this.animationCtrl
-    //   .create()
-    //   .addElement(document.querySelector('.container'))
-    //   .duration(2000)
-    //   .beforeStyles({
-    //     opacity: 0.2,
-    //   })
-    //   .afterStyles({
-    //     background: 'rgba(0, 255, 0, 0.5)',
-    //   })
-    //   .afterClearStyles(['opacity'])
-    //   .keyframes([
-    //     { offset: 0, transform: 'scale(1)' },
-    //     { offset: 0.5, transform: 'scale(1.5)' },
-    //     { offset: 1, transform: 'scale(1)' },
-    //   ]);
+    private animationCtrl: AnimationController
+  ) {}
 
-    // document.querySelector('#play').addEventListener('click', () => {
-    //   animation.play();
-    // });
+  //evento disparado depois que o angular carregou todos os componentes da tela
+  ngAfterViewInit() {
+    this.createAnimation();
+  }
+
+  public createAnimation(): void {
+    this.animationCtrl
+      .create()
+      .addElement(this.mainAnimation.nativeElement)
+      .duration(1000)
+      .easing('ease-in-out')
+      .fromTo('transform', 'translateY(70px)', 'translateY(-50px)')
+      .fromTo('opacity', '0', '1') //animacao usada, inicio, posicao original
+      .play();
   }
 
   public toRedirect(): void {
