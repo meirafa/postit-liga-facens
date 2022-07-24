@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { FeedPageRoutingModule } from './feed-routing.module';
 
 import { FeedPage } from './feed.page';
+import { FeedItemModule } from 'src/app/components/feed-item/feed-item.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FeedPageRoutingModule
+    FeedPageRoutingModule,
+    FeedItemModule,
   ],
-  declarations: [FeedPage]
+  declarations: [FeedPage],
 })
 export class FeedPageModule {}
