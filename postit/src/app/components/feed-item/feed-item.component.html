@@ -19,11 +19,11 @@
       <button type="button">Publicar</button>
     </div>
     <div class="actions--section">
-      <img src="assets/imgs/postit_comment.svg" /><ng-container
+      <img src="assets/icon/postit_comment.svg" /><ng-container
         *ngIf="!isLiked else liked"
       >
         <img
-          src="assets/imgs/postit_like_heart.svg"
+          src="assets/icon/postit_like_heart.svg"
           alt="icon heart like"
           (click)="setLikeToPostit()"
         />
@@ -32,5 +32,5 @@
   </footer>
 </div>
 <ng-template #liked>
-  <img src="assets/imgs/postit_like_heart_filled.svg" />
+  <img src="assets/icon/postit_like_heart_filled.svg" />
 </ng-template>

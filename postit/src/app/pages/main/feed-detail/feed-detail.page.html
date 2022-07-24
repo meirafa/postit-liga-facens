@@ -1,9 +1,9 @@
 <div class="feed-detail">
-  <img class="detail" src="assets/imgs/background-home.svg" />
+  <img class="detail" src="assets/imgs/background/background-home.svg" />
 
   <header>
-    <img class="go-back" src="assets/imgs/go-back.svg" />
-    <img class="noteAndFriends" src="assets/imgs/note_and_friends.svg" />
+    <img class="go-back" src="assets/icon/go-back.svg" />
+    <img class="noteAndFriends" src="assets/imgs/logos/note_and_friends.svg" />
   </header>
 
   <main>
@@ -36,7 +36,7 @@
         <div class="actions--section">
           <ng-container *ngIf="!isLiked else liked">
             <img
-              src="assets/imgs/postit_like_heart.svg"
+              src="assets/icon/postit_like_heart.svg"
               (click)="setLikeToPostIt()"
             />
           </ng-container>
@@ -48,7 +48,7 @@
 
 <ng-template #liked>
   <img
-    src="assets/imgs/postit_like_heart_filled.svg"
+    src="assets/icon/postit_like_heart_filled.svg"
     (click)="setLikeToPostIt()"
   />
 </ng-template>

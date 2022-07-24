@@ -10,22 +10,6 @@ import { NavbarItemInterface } from 'src/app/models/interfaces/navbar-intem.inte
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-
-  constructor(
-    private readonly router: Router,
-  ) {
-    router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe((route: NavigationEnd) => {
-        if (route.url.includes('/feed'))
-          this.currentNavbar = NavbarEnum.FEED;
-        if (route.url.includes('/home'))
-          this.currentNavbar = NavbarEnum.HOME;
-        if (route.url.includes('/profile'))
-          this.currentNavbar = NavbarEnum.PROFILE;
-      });
-  }
-
   public navbarEnum: typeof NavbarEnum = NavbarEnum;
   public currentNavbar: NavbarEnum = NavbarEnum.HOME;
 
@@ -33,23 +17,39 @@ export class NavbarComponent {
     {
       type: NavbarEnum.FEED,
       link: '/feed',
-      icon: 'assets/imgs/navbar_feed_disabled.svg',
-      iconActivated: 'assets/imgs/navbar_feed_enabled.svg',
-      alt: 'icon feed'
+      icon: 'assets/icon/navbar_feed_disabled.svg',
+      iconActivated: 'assets/icon/navbar_feed_enabled.svg',
+      alt: 'icon feed',
     },
     {
       type: NavbarEnum.HOME,
       link: '/home',
-      icon: 'assets/imgs/navbar_home_disabled.svg',
-      iconActivated: 'assets/imgs/navbar_home_enabled.svg',
-      alt: 'icon home'
+      icon: 'assets/icon/navbar_home_disabled.svg',
+      iconActivated: 'assets/icon/navbar_home_enabled.svg',
+      alt: 'icon home',
     },
     {
       type: NavbarEnum.PROFILE,
       link: '/profile',
-      icon: 'assets/imgs/navbar_profile_disabled.svg',
-      iconActivated: 'assets/imgs/navbar_profile_enabled.svg',
-      alt: 'icon profile'
+      icon: 'assets/icon/navbar_profile_disabled.svg',
+      iconActivated: 'assets/icon/navbar_profile_enabled.svg',
+      alt: 'icon profile',
     },
-  ]
+  ];
+
+  constructor(private readonly router: Router) {
+    router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((route: NavigationEnd) => {
+        if (route.url.includes('/feed')) {
+          this.currentNavbar = NavbarEnum.FEED;
+        }
+        if (route.url.includes('/home')) {
+          this.currentNavbar = NavbarEnum.HOME;
+        }
+        if (route.url.includes('/profile')) {
+          this.currentNavbar = NavbarEnum.PROFILE;
+        }
+      });
+  }
 }
