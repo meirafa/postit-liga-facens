@@ -70,12 +70,14 @@ export class HomePage implements OnInit {
 
     await modal.present();
 
-    // modal.onDidDismiss().then(async ({ data: postit }) => {
-    //   // let index = this.postItArray.findIndex(post => post.id == postIt.id);
-    //   // this.postItArray[index] = postIt;
-    //   console.log('postit', postit);
-    //   console.log('postitArray', this.postitArray);
-    // });
+    modal.onDidDismiss().then(async ({ data }) => {
+      console.log('postit', postit);
+      console.log('postitArray', this.postitArray);
+
+      if(data.isDeleted){
+        this.postitArray = this.postitArray.filter(post => post.id !== data.postit.id);
+      }
+    });
   }
 
   public async openNewPostModal(color: PostitColorEnum): Promise<void> {

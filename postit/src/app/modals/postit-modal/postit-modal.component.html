@@ -1,10 +1,5 @@
 <div class="postit-modal" [style.background-color]="color">
-  <span
-    *ngIf="create"
-    class="postit-modal--close"
-    (click)="modalController.dismiss()"
-    >X</span
-  >
+  <span *ngIf="create" class="postit-modal--close" (click)="closeModal()">X</span>
 
   <span *ngIf="!create" class="postit-modal--options" id="left-start">...</span>
 
@@ -20,7 +15,8 @@
           <ion-item button="true" detail="false" (click)="create = true"
             >Editar</ion-item
           ><ion-item button="true" detail="false">Publicar no feed</ion-item
-          ><ion-item button="true" detail="false">Excluir nota</ion-item>
+          ><ion-item button="true" detail="false" (click)="deletePostit()">Excluir nota</ion-item>
+          <ion-item button="true" detail="false" (click)="closeModal()">Fechar nota</ion-item>
         </ion-list>
       </ion-content>
     </ng-template>
