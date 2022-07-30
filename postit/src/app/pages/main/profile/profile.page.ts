@@ -8,7 +8,50 @@ import { PostitProxy } from 'src/app/models/proxies/postit.proxy';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  public postitArray: PostitProxy[] = [];
+  public postitArray: PostitProxy[] = [
+    {
+      id: 0,
+      title: 'Título da Nota',
+      annotation:
+        'Repudiandae, repellendus porro reprehenderit dolores voluptate numquam libero fuga.',
+      color: PostitColorEnum.GREEN,
+    },
+    {
+      id: 1,
+      title: 'Título da Nota',
+      annotation:
+        'Repudiandae, repellendus porro reprehenderit dolores voluptate numquam libero fuga.',
+      color: PostitColorEnum.YELLOW,
+    },
+    {
+      id: 2,
+      title: 'Título da Nota',
+      annotation:
+        'Repudiandae, repellendus porro reprehenderit dolores voluptate numquam libero fuga.',
+      color: PostitColorEnum.BLUE,
+    },
+    {
+      id: 3,
+      title: 'Título da Nota',
+      annotation:
+        'Repudiandae, repellendus porro reprehenderit dolores voluptate numquam libero fuga.',
+      color: PostitColorEnum.PURPLE,
+    },
+    {
+      id: 4,
+      title: 'Título da Nota',
+      annotation:
+        'Repudiandae, repellendus porro reprehenderit dolores voluptate numquam libero fuga.',
+      color: PostitColorEnum.ORANGE,
+    },
+    {
+      id: 5,
+      title: 'Título da Nota',
+      annotation:
+        'Repudiandae, repellendus porro reprehenderit dolores voluptate numquam libero fuga.',
+      color: PostitColorEnum.ROSE,
+    },
+  ];
   constructor() {}
 
   ngOnInit() {}

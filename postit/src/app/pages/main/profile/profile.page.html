@@ -7,16 +7,33 @@
 
   <main>
     <header>
-      <ion-avatar class="user--avatar">
-        <img src="assets/imgs/awesome-user.svg" />
-      </ion-avatar>
-      <ion-buttons slot="end">
-       <ion-menu-button color="primary" menu="main"></ion-menu-button>
-      </ion-buttons>
-      <app-menu></app-menu>
+      <div class="user">
+        <div class="user--avatar">
+          <ion-avatar>
+            <img src="assets/imgs/awesome-user.svg" />
+          </ion-avatar>
+        </div>
+        <ion-label>
+          <h2>Cristian Perosa</h2>
+          <p>Fisioterapeuta Esportivo</p>
+        </ion-label>
+      </div>
+      <div class="menu">
+        <ion-toolbar>
+          <ion-buttons slot="end">
+            <ion-menu-button autoHide="false"></ion-menu-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </div>
     </header>
-    <!-- <ng-container *ngFor="let post of postitArray">
-        <app-feed-item [postit]="post"></app-feed-item>
-      </ng-container> -->
+
+    <section>
+      <p>notas publicas</p>
+        <ng-container *ngFor="let post of postitArray">
+          <div class="feed-item">
+            <app-feed-item [postit]="post"></app-feed-item>
+          </div>
+        </ng-container>
+    </section>
   </main>
 </div>
