@@ -1,13 +1,23 @@
 <div class="feed">
-  <img class="detail" src="assets/imgs/background/background-home.svg" alt="background" />
+  <img
+    class="detail"
+    src="assets/imgs/background/background-home.svg"
+    alt="background"
+  />
 
   <header>
-    <img class="noteAndFriends" src="assets/imgs/logos/note_and_friends.svg" alt="" />
+    <img
+      class="noteAndFriends"
+      src="assets/imgs/logos/note_and_friends.svg"
+      alt=""
+    />
   </header>
 
   <main>
     <ng-container *ngFor="let post of postitArray">
-      <app-feed-item [postit]="post"></app-feed-item>
+      <div class="feed-item">
+        <app-feed-item [postit]="post"></app-feed-item>
+      </div>
     </ng-container>
   </main>
 </div>

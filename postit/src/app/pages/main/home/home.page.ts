@@ -1,6 +1,6 @@
 import { PostitColorEnum } from './../../../models/enums/postit-color.enum';
 import { PostitProxy } from './../../../models/proxies/postit.proxy';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { PostitModalComponent } from 'src/app/modals/postit-modal/postit-modal.component';
 
@@ -9,7 +9,7 @@ import { PostitModalComponent } from 'src/app/modals/postit-modal/postit-modal.c
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage {
   public postitArray: PostitProxy[] = [
     {
       id: 0,
@@ -63,6 +63,7 @@ export class HomePage implements OnInit {
     const modal = await this.modalController.create({
       component: PostitModalComponent,
       cssClass: 'background-modal',
+      backdropDismiss: true,
       componentProps: {
         postit,
       },
@@ -71,11 +72,11 @@ export class HomePage implements OnInit {
     await modal.present();
 
     modal.onDidDismiss().then(async ({ data }) => {
-      console.log('postit', postit);
-      console.log('postitArray', this.postitArray);
-
-      if(data.isDeleted){
-        this.postitArray = this.postitArray.filter(post => post.id !== data.postit.id);
+      console.log(data);
+      if (data.isDeleted) {
+        this.postitArray = this.postitArray.filter(
+          post => post.id !== data.postit.id
+        );
       }
     });
   }
@@ -84,6 +85,7 @@ export class HomePage implements OnInit {
     const modal = await this.modalController.create({
       component: PostitModalComponent,
       cssClass: 'background-modal',
+      backdropDismiss: true,
       componentProps: {
         color,
         create: true,
@@ -92,18 +94,14 @@ export class HomePage implements OnInit {
 
     await modal.present();
 
-    modal.onDidDismiss().then(async ({ data: postit }) => {
-      if (postit) {
-        this.postitArray.push(postit);
+    modal.onDidDismiss().then(async ({ data }) => {
+      if (data.postit) {
+        this.postitArray.push(data.postit);
       }
     });
   }
 
   public printPostit(event: PostitProxy): void {
     console.log('postit', event);
-  }
-
-  ngOnInit() {
-    //console.log('postitiColorEnum', this.postitColorEnum);
   }
 }

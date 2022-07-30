@@ -1,3 +1,4 @@
+import { FeedItemModule } from './../../../components/feed-item/feed-item.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,14 +8,17 @@ import { IonicModule } from '@ionic/angular';
 import { ProfilePageRoutingModule } from './profile-routing.module';
 
 import { ProfilePage } from './profile.page';
+import { MenuModule } from '../../../components/menu/menu.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ProfilePageRoutingModule
+    ProfilePageRoutingModule,
+    FeedItemModule,
+    MenuModule,
   ],
-  declarations: [ProfilePage]
+  declarations: [ProfilePage],
 })
 export class ProfilePageModule {}

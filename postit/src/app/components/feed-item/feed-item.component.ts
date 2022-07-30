@@ -10,7 +10,7 @@ export class FeedItemComponent implements OnInit {
   @Input()
   public postit: PostitProxy;
 
-  public isLiked: boolean = false;
+  public isLiked: boolean;
 
   constructor() {}
 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PostitColorEnum } from 'src/app/models/enums/postit-color.enum';
+import { PostitProxy } from 'src/app/models/proxies/postit.proxy';
 
 @Component({
   selector: 'app-profile',
@@ -6,10 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+  public postitArray: PostitProxy[] = [];
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

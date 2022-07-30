@@ -17,7 +17,7 @@ export class PostitModalComponent implements OnInit {
 
   @Input()
   public postit: PostItPayload = {
-    id: 6,
+    id: Math.floor(Math.random() * 100),
     title: '',
     annotation: '',
     color: PostitColorEnum.BLUE,
@@ -31,10 +31,10 @@ export class PostitModalComponent implements OnInit {
     }
   }
 
-  public savePostIt(): void {
+  public savePostit(): void {
     this.postit.color = this.color;
 
-    this.modalController.dismiss(this.postit);
+    this.modalController.dismiss({ postit: this.postit });
   }
 
   public deletePostit(): void {

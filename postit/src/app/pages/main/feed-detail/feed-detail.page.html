@@ -2,12 +2,25 @@
   <img class="detail" src="assets/imgs/background/background-home.svg" />
 
   <header>
-    <img class="go-back" src="assets/icon/go-back.svg" />
-    <img class="noteAndFriends" src="assets/imgs/logos/note_and_friends.svg" />
+    <img
+      class="go-back"
+      src="assets/icon/go-back.svg"
+      [routerLink]="['/feed']"
+      alt="imagem voltar"
+    />
+    <img
+      class="noteAndFriends"
+      src="assets/imgs/logos/note_and_friends.svg"
+      alt="logo note and friends"
+    />
   </header>
 
   <main>
-    <div class="feed-item" [style.background-color]="postit.color">
+    <div
+      *ngIf="postit"
+      class="feed-item"
+      [style.background-color]="postit.color"
+    >
       <header>
         <ion-avatar class="user--avatar">
           <img src="assets/imgs/awesome-user.svg" />
@@ -29,17 +42,19 @@
         </div>
       </main>
       <footer>
-        <div class="comment--section">
-          <input type="text" placeholder="Inserir comentário" />
-          <button type="button">Publicar</button>
-        </div>
-        <div class="actions--section">
-          <ng-container *ngIf="!isLiked else liked">
-            <img
-              src="assets/icon/postit_like_heart.svg"
-              (click)="setLikeToPostIt()"
-            />
-          </ng-container>
+        <div class="footer" [style.background-color]="postit.color">
+          <div class="comment--section">
+            <input type="text" placeholder="Inserir comentário" />
+            <button type="button">Publicar</button>
+          </div>
+          <div class="actions--section">
+            <ng-container *ngIf="!isLiked else liked">
+              <img
+                src="assets/icon/postit_like_heart.svg"
+                (click)="setLikeToPostIt()"
+              />
+            </ng-container>
+          </div>
         </div>
       </footer>
     </div>

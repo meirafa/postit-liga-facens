@@ -1,9 +1,22 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>profile</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="profile">
+  <img
+    class="detail"
+    src="assets/imgs/background/background-home.svg"
+    alt="detalhe de quadrados"
+  />
 
-<ion-content>
-
-</ion-content>
+  <main>
+    <header>
+      <ion-avatar class="user--avatar">
+        <img src="assets/imgs/awesome-user.svg" />
+      </ion-avatar>
+      <ion-buttons slot="end">
+       <ion-menu-button color="primary" menu="main"></ion-menu-button>
+      </ion-buttons>
+      <app-menu></app-menu>
+    </header>
+    <!-- <ng-container *ngFor="let post of postitArray">
+        <app-feed-item [postit]="post"></app-feed-item>
+      </ng-container> -->
+  </main>
+</div>

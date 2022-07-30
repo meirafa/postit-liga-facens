@@ -108,12 +108,20 @@
           margin-bottom: 1rem;
         }
       }
+    }
+    footer {
+      z-index: 999;
+      position: absolute;
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
 
-      footer {
+      .footer {
         position: fixed;
         display: flex;
+        align-items: center;
+        justify-content: space-evenly;
         bottom: 8rem;
-        height: 2rem;
 
         .comment--section {
           flex: 1;

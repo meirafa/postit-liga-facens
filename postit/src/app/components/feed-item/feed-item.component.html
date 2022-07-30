@@ -7,7 +7,7 @@
       <span class="user--info--name"> Ana Bonfim </span>
       <span class="user--info--role"> Economista </span>
     </div>
-    <button class="read--more" type="button">Ler mais +</button>
+    <button [routerLink]="['/feed', postit.id]" class="read--more" type="button">Ler mais +</button>
   </header>
   <main>
     <div class="title">{{ postit.title }}</div>
