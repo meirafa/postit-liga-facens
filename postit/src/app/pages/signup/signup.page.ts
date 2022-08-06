@@ -64,17 +64,24 @@ export class SignupPage implements AfterViewInit {
       return;
     }
     this.isSigning = true;
+    const [isSuccess, message] = await this.auth.register(this.registerPayload);
+    this.isSigning = false;
+    if (isSuccess) {
+      return void (await this.router.navigate(['/home']));
+    }
+    // //alert
+    // await this.helper.showAlert(
+    //   'Olá ' + this.signupPayload.name + ' seja bem vindo!',
+    //   [
+    //     {
+    //       text: 'entrar',
+    //       handler: () => this.router.navigate(['/home']),
+    //     },
+    //   ]
+    // );
 
-    //alert
-    await this.helper.showAlert(
-      'Olá ' + this.signupPayload.name + ' seja bem vindo!',
-      [
-        {
-          text: 'entrar',
-          handler: () => this.router.navigate(['/home']),
-        },
-      ]
-    );
+    // alert
+    await this.helper.showToast(message, 5_000);
   }
 
   public canRegister(): boolean {
@@ -97,22 +104,5 @@ export class SignupPage implements AfterViewInit {
     }
 
     return true;
-  }
-
-  public async register(): Promise<void> {
-    if (!this.canRegister()) {
-      return;
-    }
-
-    this.isSigning = true;
-    const [isSuccess, message] = await this.auth.register(this.registerPayload);
-    this.isSigning = false;
-
-    if (isSuccess) {
-      return void (await this.router.navigate(['/home']));
-    }
-
-    // alert
-    await this.helper.showToast(message, 5_000);
   }
 }

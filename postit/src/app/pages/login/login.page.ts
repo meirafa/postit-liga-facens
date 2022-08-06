@@ -29,11 +29,12 @@ export class LoginPage {
     this.isLoading = true;
     const [isSuccess, message] = await this.auth.login(this.loginPayload.email, this.loginPayload.password);
     this.isLoading = false;
-    //toast
-    await this.helper.showToast('Carregando...');
+
     if (isSuccess) {
       return void await this.router.navigate(['/home']);
     }
+    //toast
+    await this.helper.showToast('Carregando...');
     //alert
     await this.helper.showAlert('Bem vindo!', [
       {
