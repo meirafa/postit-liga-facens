@@ -3,6 +3,8 @@ import { SignupPayload } from './../../models/payload/signup.payload';
 import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AnimationController } from '@ionic/angular';
+import { RegisterPayload } from 'src/app/models/payload/create-user.pauload';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -20,12 +22,21 @@ export class SignupPage implements AfterViewInit {
     repeatPassword: '',
   };
 
+  public registerPayload: RegisterPayload = {
+    name: '',
+    email: '',
+    confirmEmail: '',
+    password: '',
+    confirmPassword: '',
+  };
+
   public isSigning: boolean;
 
   constructor(
     private router: Router,
     private readonly helper: HelperService,
-    private animationCtrl: AnimationController
+    private animationCtrl: AnimationController,
+    private readonly auth: AuthService
   ) {}
 
   //evento disparado depois que o angular carregou todos os componentes da tela
@@ -86,5 +97,22 @@ export class SignupPage implements AfterViewInit {
     }
 
     return true;
+  }
+
+  public async register(): Promise<void> {
+    if (!this.canRegister()) {
+      return;
+    }
+
+    this.isSigning = true;
+    const [isSuccess, message] = await this.auth.register(this.registerPayload);
+    this.isSigning = false;
+
+    if (isSuccess) {
+      return void (await this.router.navigate(['/home']));
+    }
+
+    // alert
+    await this.helper.showToast(message, 5_000);
   }
 }

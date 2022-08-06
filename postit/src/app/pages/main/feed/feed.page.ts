@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PostitColorEnum } from 'src/app/models/enums/postit-color.enum';
 import { PostitProxy } from 'src/app/models/proxies/postit.proxy';
+import { HttpAsyncService } from '../../../modules/http-async/services/http-async.service';
+import { apiRoutes } from '../../../../environments/api-routes';
 
 @Component({
   selector: 'app-feed',
@@ -53,10 +55,9 @@ export class FeedPage implements OnInit {
     },
   ];
 
-
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private readonly http: HttpAsyncService) {
+    this.http.get(apiRoutes.notes.me).then(console.log);
   }
 
+  ngOnInit() {}
 }

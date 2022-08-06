@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
 import { HelperService } from 'src/app/services/helper.service';
 import { Router } from '@angular/router';
 
+import { AuthService } from '../../services/auth.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -17,15 +19,21 @@ export class LoginPage {
 
   public isLoading: boolean;
 
-  constructor(private readonly helper: HelperService, private readonly router: Router) {}
+  constructor(private readonly helper: HelperService, private readonly router: Router, private readonly auth: AuthService) {}
 
   public async login(): Promise<void> {
+
     if (!this.canLogin()) {
       return;
     }
     this.isLoading = true;
+    const [isSuccess, message] = await this.auth.login(this.loginPayload.email, this.loginPayload.password);
+    this.isLoading = false;
     //toast
     await this.helper.showToast('Carregando...');
+    if (isSuccess) {
+      return void await this.router.navigate(['/home']);
+    }
     //alert
     await this.helper.showAlert('Bem vindo!', [
       {
@@ -35,6 +43,7 @@ export class LoginPage {
     ]);
 
     console.log(this.loginPayload);
+    await this.helper.showToast(message, 5_000);
   }
 
   public canLogin(): boolean {

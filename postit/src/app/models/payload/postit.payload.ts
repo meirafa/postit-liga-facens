@@ -5,4 +5,5 @@ export interface PostItPayload {
   title: string;
   annotation: string;
   color: PostitColorEnum;
+  isPublic: boolean;
 }

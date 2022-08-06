@@ -4,6 +4,15 @@
   justify-content: center;
 }
 
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+ion-spinner {
+  margin-left: 0.5rem;
+}
+
 .postit-modal {
   position: relative;
   width: 65vw;

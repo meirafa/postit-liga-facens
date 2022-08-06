@@ -3,6 +3,8 @@ import { PostitProxy } from './../../../models/proxies/postit.proxy';
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { PostitModalComponent } from 'src/app/modals/postit-modal/postit-modal.component';
+import { HelperService } from '../../../services/helper.service';
+import { NoteService } from '../../../services/note.service';
 
 @Component({
   selector: 'app-home',
@@ -10,54 +12,33 @@ import { PostitModalComponent } from 'src/app/modals/postit-modal/postit-modal.c
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage {
-  public postitArray: PostitProxy[] = [
-    {
-      id: 0,
-      title: 'Título da Nota',
-      annotation:
-        'Repudiandae, repellendus porro reprehenderit dolores voluptate numquam libero fuga.',
-      color: PostitColorEnum.GREEN,
-    },
-    {
-      id: 1,
-      title: 'Título da Nota',
-      annotation:
-        'Repudiandae, repellendus porro reprehenderit dolores voluptate numquam libero fuga.',
-      color: PostitColorEnum.YELLOW,
-    },
-    {
-      id: 2,
-      title: 'Título da Nota',
-      annotation:
-        'Repudiandae, repellendus porro reprehenderit dolores voluptate numquam libero fuga.',
-      color: PostitColorEnum.BLUE,
-    },
-    {
-      id: 3,
-      title: 'Título da Nota',
-      annotation:
-        'Repudiandae, repellendus porro reprehenderit dolores voluptate numquam libero fuga.',
-      color: PostitColorEnum.PURPLE,
-    },
-    {
-      id: 4,
-      title: 'Título da Nota',
-      annotation:
-        'Repudiandae, repellendus porro reprehenderit dolores voluptate numquam libero fuga.',
-      color: PostitColorEnum.ORANGE,
-    },
-    {
-      id: 5,
-      title: 'Título da Nota',
-      annotation:
-        'Repudiandae, repellendus porro reprehenderit dolores voluptate numquam libero fuga.',
-      color: PostitColorEnum.ROSE,
-    },
-  ];
+  public postitArray: PostitProxy[] = [];
 
   public postitColorEnum: typeof PostitColorEnum = PostitColorEnum;
 
-  constructor(public modalController: ModalController) {}
+  public isLoading: boolean;
+
+  constructor(
+    public modalController: ModalController,
+    private readonly note: NoteService,
+    private readonly helper: HelperService
+  ) {}
+
+  public async ionViewDidEnter(): Promise<void> {
+    await this.loadMyNotes();
+  }
+
+  public async loadMyNotes(): Promise<void> {
+    this.isLoading = true;
+    const [notes, errorMessage] = await this.note.getMyNotes();
+    this.isLoading = false;
+
+    if (errorMessage) {
+      return this.helper.showToast(errorMessage, 5_000);
+    }
+
+    this.postitArray = notes;
+  }
 
   public async openPostModal(postit: PostitProxy): Promise<void> {
     const modal = await this.modalController.create({
@@ -75,7 +56,7 @@ export class HomePage {
       console.log(data);
       if (data.isDeleted) {
         this.postitArray = this.postitArray.filter(
-          post => post.id !== data.postit.id
+          (post) => post.id !== data.postit.id
         );
       }
     });

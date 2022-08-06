@@ -14,7 +14,7 @@
         <ion-list>
           <ion-item button="true" detail="false" (click)="create = true"
             >Editar</ion-item
-          ><ion-item button="true" detail="false">Publicar no feed</ion-item
+          ><ion-item button="true" detail="false" (click)="publishPostit()">Publicar no feed</ion-item
           ><ion-item button="true" detail="false" (click)="deletePostit()">Excluir nota</ion-item>
           <ion-item button="true" detail="false" (click)="closeModal()">Fechar nota</ion-item>
         </ion-list>
@@ -42,6 +42,7 @@
   </main>
 
   <footer>
-    <span (click)="savePostit()">Colar no mural</span>
+    <span  [class.disabled]="isLoading" (click)="savePostit()">Colar no mural</span>
+    <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
   </footer>
 </div>
